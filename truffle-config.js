@@ -21,6 +21,7 @@
 require("dotenv").config();
 const mnemonic = process.env["MNEMONIC"];
 const infuraProjectId = process.env["INFURA_PROJECT_ID"];
+const BSCSCANAPIKEY = process.env["BSCSCANAPIKEY"];
 
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 
@@ -36,6 +37,10 @@ module.exports = {
    */
 
   // contracts_build_directory: "../Client/contracts",
+  plugins: ["truffle-plugin-verify"],
+  api_keys: {
+   bscscan: BSCSCANAPIKEY
+ },
   networks: {
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
